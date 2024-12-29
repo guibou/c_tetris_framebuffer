@@ -80,3 +80,8 @@ struct vec2 rotate(struct vec2 quad, int rotation)
     return rotate(quadRotated, rotation - 1);
 }
 
+struct vec2 translate(struct vec2 a, struct vec2 b)
+{
+    return (struct vec2) {a.x + b.x, a.y + b.y};
+}
+

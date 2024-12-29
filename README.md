@@ -14,3 +14,8 @@ It can display the different pieces
 
 
 ![](assets/tetrismino.png)
+
+And now we can play, the different pieces are generated, going down, stacking. But it does not handle user input.
+
+
+![](assets/current_stacking.png)
