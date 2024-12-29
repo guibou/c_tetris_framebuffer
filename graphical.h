@@ -1,5 +1,7 @@
 #pragma once
 
+#include <assert.h>
+
 struct pixel {
   char r, g, b, a;
 };
@@ -10,6 +12,7 @@ struct fb {
 };
 
 inline void set_pixel(int x, int y, struct fb *fb, struct pixel p) {
+  assert(x >= 0 && x < fb->resX && y >= 0 && y < fb->resY);
   struct pixel *pixel = fb->pixels + fb->resX * y + x;
   pixel->r = p.r;
   pixel->g = p.g;

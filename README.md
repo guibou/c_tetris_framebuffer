@@ -7,3 +7,10 @@ direct access to linux framebuffer.
 # Run
 
 Run `nix run` in a linux terminal (not under X).
+
+# Current state
+
+It can display the different pieces
+
+
+![](assets/tetrismino.png)
