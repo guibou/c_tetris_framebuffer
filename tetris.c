@@ -7,45 +7,12 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-struct pixel {
-  char r, g, b, a;
-};
-
-struct fb {
-  struct pixel *pixels;
-  int resX, resY;
-};
-
-void set_pixel(int x, int y, struct fb *fb, struct pixel p) {
-  struct pixel *pixel = fb->pixels + fb->resX * y + x;
-  pixel->r = p.r;
-  pixel->g = p.g;
-  pixel->b = p.b;
-  pixel->a = p.a;
-}
+#include "graphical.h"
 
 int main() {
   printf("Welcome to tetris\n");
 
-  // Open the fb
-  int fd = open("/dev/fb0", O_RDWR);
-  struct fb fb;
-  {
-
-    // Get resolution, read the kernel fb.h documentation for them
-    struct fb_var_screeninfo info;
-    ioctl(fd, FBIOGET_VSCREENINFO, &info);
-    const int resX = info.xres;
-    const int resY = info.yres;
-
-    printf("Initialized fb of size %dx%d\n", resX, resY);
-    // We'll assume 32 bits per pixel, because I'm lazy.
-    struct pixel *pixels =
-        mmap(NULL, resX * resY * 4, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-    fb.pixels = pixels;
-    fb.resX = info.xres;
-    fb.resY = info.yres;
-  }
+  struct fb fb = open_fb("/dev/fb0");
 
   // Bouncing ball animation
   int cX = 0;
@@ -81,6 +48,5 @@ int main() {
     cY = cY + vY;
   }
 
-  munmap(fb.pixels, 0);
-  close(fd);
+  close_fb(&fb);
 }
