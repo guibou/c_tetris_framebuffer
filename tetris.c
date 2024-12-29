@@ -174,8 +174,7 @@ int main() {
     draw_shape(&draw_info, game.current_shape, game.current_shape_rotation,
                game.current_shape_position);
 
-    struct timespec tim = {0, game.speed * 1000 * 1000};
-    nanosleep(&tim, NULL);
+    usleep(game.speed * 1000);
 
     // Move
     if (game_check(&game, (struct vec2){0, 1}, 0)) {
