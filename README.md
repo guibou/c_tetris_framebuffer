@@ -8,6 +8,8 @@ direct access to linux framebuffer.
 
 Run `nix run` in a linux terminal (not under X).
 
+Use `A` and `D` to go left/right and `,` or `o` to rotate the piece.
+
 # Current state
 
 It can display the different pieces
@@ -19,3 +21,6 @@ And now we can play, the different pieces are generated, going down, stacking. B
 
 
 ![](assets/current_stacking.png)
+Actually, we can play, and score is increased when lines are completely filled.
+
+TODO: add a screenshot

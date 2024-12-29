@@ -72,6 +72,7 @@ const int nbShapes = 7;
 // It does not follows the tetris guideline about rotation, because I'm too lazy!
 struct vec2 rotate(struct vec2 quad, int rotation)
 {
+    assert(rotation >= 0);
     // Functional programming style!
     if(rotation == 0)
         return quad;

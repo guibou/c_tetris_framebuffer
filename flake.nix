@@ -5,7 +5,7 @@
 
   outputs = { nixpkgs, ... }: {
     devShells.x86_64-linux.default = with nixpkgs.legacyPackages.x86_64-linux; mkShell {
-      buildInputs = [ clang ccls ];
+      buildInputs = [ gcc ccls ];
     };
     packages.x86_64-linux.default = with nixpkgs.legacyPackages.x86_64-linux; stdenv.mkDerivation
       {
